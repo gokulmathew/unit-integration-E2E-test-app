@@ -1,0 +1,43 @@
+.App {
+  text-align: center;
+}
+
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.outerBox{
+  border-color:lightblue;
+  border-style:solid;
+  
+  display: flex;
+  height: 400px;
+  margin: 20px;
+  
+  
+  
+}
+.innerBox{
+  border-color:coral;
+  border-style:solid;
+  background-color:#FFA07A;
+  flex: 1;
+  height: 100%;
+  
+}
+
+
+

@@ -1,0 +1,17 @@
+.centerContent {
+  display: grid;
+  justify-content: center;
+}
+.submit {
+  padding: 5px 20px;
+}
+hr {
+  border: 1px solid green;
+}
+ul {
+  margin: 20px;
+}
+li {
+  padding: 2px;
+  margin: 2px;
+}
