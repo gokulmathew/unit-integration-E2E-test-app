@@ -1,9 +1,13 @@
+body {
+  margin: 10px;
+}
 .centerContent {
   display: grid;
   justify-content: center;
 }
 .submit {
   padding: 5px 20px;
+  margin: 16px;
 }
 hr {
   border: 1px solid green;

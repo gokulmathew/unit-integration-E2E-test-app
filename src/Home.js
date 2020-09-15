@@ -22,18 +22,20 @@ function Home(props) {
       const result = await axios.get(
         "https://jsonplaceholder.typicode.com/users"
       );
-      setTimeout(() => {
-        setAPIData(result.data);
-      }, 4500);
-      //setAPIData(result.data);
+
+      setAPIData(result.data);
     } catch (e) {
       console.log("error", e.message);
     }
   };
+
+  const cancelAPIData = () => {
+    setAPIData([]);
+  };
   return (
     <div className="centerContent">
       <h2>
-        Welcome to the home page! Your id is&nbsp;
+        Welcome to the home page! Your Email id is&nbsp;
         <span style={{ color: "rebeccapurple" }}>
           {props.match.params.data}
         </span>
@@ -68,9 +70,11 @@ function Home(props) {
         <hr />
       </form>
 
-      <div className="centerContent">
-        <h3>Get Data from API</h3>
-        <div className="centerContent">
+      <div>
+        <h3>
+          Get Data from API - [https://jsonplaceholder.typicode.com/users]
+        </h3>
+        <div>
           <button
             onClick={() => getAPIData()}
             className="btn btn-danger submit"
@@ -78,10 +82,20 @@ function Home(props) {
           >
             Get Data
           </button>
+          <button
+            onClick={() => cancelAPIData()}
+            className="btn btn-secondary submit"
+            id="get_data_btn"
+          >
+            Cancel
+          </button>
         </div>
         <ul>
-          {apiData &&
-            apiData.map((user) => <li key={user.id}>{user.email}</li>)}
+          {apiData
+            ? apiData.length > 0
+              ? apiData.map((user) => <li key={user.id}>{user.email}</li>)
+              : "No users available"
+            : "Please click the button to fetch sample data"}
         </ul>
       </div>
     </div>
