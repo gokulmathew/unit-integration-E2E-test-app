@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import useInput from "./useInput";
-import "./common.css";
-import axios from "axios";
 
 function Home(props) {
   const name = useInput("");
   const comment = useInput("");
-
-  const [apiData, setAPIData] = useState(null);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -17,21 +13,6 @@ function Home(props) {
     );
   };
 
-  const getAPIData = async () => {
-    try {
-      const result = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-
-      setAPIData(result.data);
-    } catch (e) {
-      console.log("error", e.message);
-    }
-  };
-
-  const cancelAPIData = () => {
-    setAPIData([]);
-  };
   return (
     <div className="centerContent">
       <h2>
@@ -69,35 +50,6 @@ function Home(props) {
         </div>
         <hr />
       </form>
-
-      <div>
-        <h3>
-          Get Data from API - [https://jsonplaceholder.typicode.com/users]
-        </h3>
-        <div>
-          <button
-            onClick={() => getAPIData()}
-            className="btn btn-danger submit"
-            id="get_data_btn"
-          >
-            Get Data
-          </button>
-          <button
-            onClick={() => cancelAPIData()}
-            className="btn btn-secondary submit"
-            id="get_data_btn"
-          >
-            Cancel
-          </button>
-        </div>
-        <ul>
-          {apiData
-            ? apiData.length > 0
-              ? apiData.map((user) => <li key={user.id}>{user.email}</li>)
-              : "No users available"
-            : "Please click the button to fetch sample data"}
-        </ul>
-      </div>
     </div>
   );
 }

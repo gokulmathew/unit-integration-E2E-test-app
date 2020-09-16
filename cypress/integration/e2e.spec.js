@@ -6,10 +6,6 @@ describe("Testing Full functionality", () => {
   it("Entering email", () => {
     cy.visit("/");
     cy.focused().type(emailToType);
-
-    // cy.server();
-    // cy.route(`http://localhost:3000/form-submit/${emailToType}`).as("new-page");
-
     cy.contains("Continue").click();
   });
 
@@ -38,6 +34,9 @@ describe("Testing Full functionality", () => {
 });
 
 describe("Testing API call", () => {
+  before(() => {
+    cy.visit("/users");
+  });
   it("fetch API data", () => {
     cy.contains(/Please click [a-zA-Z]+ button/);
 
@@ -59,6 +58,6 @@ describe("Testing API call", () => {
 
     cy.get(".btn-secondary").click();
     cy.get("li").should("not.exist");
-    cy.contains(/No users available/);
+    cy.contains(/Please click [a-zA-Z]+ button/);
   });
 });
