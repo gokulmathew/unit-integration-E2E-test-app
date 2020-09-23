@@ -1,5 +1,5 @@
 import React from "react";
-import useInput from "./useInput";
+import useInput from "../useInput";
 
 function Home(props) {
   const name = useInput("");
@@ -7,7 +7,6 @@ function Home(props) {
 
   const submitForm = (e) => {
     e.preventDefault();
-    console.log("sjdg");
     alert(
       `email:${props.match.params.data}\n name:${name.value}\n comments:${comment.value}`
     );
@@ -16,7 +15,7 @@ function Home(props) {
   return (
     <div className="centerContent">
       <h2>
-        Welcome to the home page! Your Email id is&nbsp;
+        Welcome to the hom page! Your Email id is&nbsp;
         <span style={{ color: "rebeccapurple" }}>
           {props.match.params.data}
         </span>

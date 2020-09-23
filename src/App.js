@@ -1,9 +1,11 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./Login";
-import Home from "./Home";
-import Users from "./Users";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Users from "./pages/Users";
+import "./common.css";
 
 function App() {
   return (

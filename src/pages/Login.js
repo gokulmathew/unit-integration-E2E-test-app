@@ -1,16 +1,30 @@
 import React, { useState } from "react";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "./common.css";
+import { useHistory } from "react-router-dom";
 
-function Login({ history }) {
+function Login() {
   const [email, setEmail] = useState("");
+  const [submit, setSubmit] = useState(false);
+  const history = useHistory();
+  const pat = /[a-z][a-z0-9]+@[a-z]+\.com/;
+  const changeHandler = (e) => {
+    setEmail(e.target.value);
+
+    // if(pat.test(e.target.value))
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push(`/form-submit/${email}`);
+    setSubmit(true);
+    setTimeout(() => {
+      history.push(`/form-submit/${email}`);
+    }, 3500);
+
+    // window.history.pushState({}, "new page", `/users`);
+    // window.history.push(`/form-submit/${email}`);
     // setTimeout(() => {
     //   setLoginSuccess(true);
     // }, 4500);
   };
+
   return (
     <div className="centerContent">
       <div>
@@ -24,16 +38,24 @@ function Login({ history }) {
               value={email}
               required
               autoFocus
+              id="exampleInputEmail1"
               className="form-control"
               placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => changeHandler(e)}
             />
             <br />
             <div className="centerContent">
-              <button className="btn btn-primary submit">Continue</button>
+              <button
+                data-testid="submit"
+                className="btn submit btn-primary"
+                disabled={!pat.test(email)}
+              >
+                Submit
+              </button>
             </div>
           </div>
         </form>
+        {submit && <p> Loading ....</p>}
       </div>
     </div>
   );
