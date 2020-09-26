@@ -20,6 +20,10 @@ describe("testing functionality", () => {
   });
 
   test("get the api data", async () => {
+    //api result testing
+    // const results = await apiClient("users");
+    // expect(results.length).toBe(10);
+
     expect(screen.getAllByTestId("user").length).toBe(10);
     expect(screen.getByRole("button", { name: "Clear" })).toBeEnabled();
   });

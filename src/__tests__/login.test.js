@@ -1,13 +1,13 @@
-import React from "react";
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
-import Login from "../pages/Login";
-import { MemoryRouter } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Login from "../pages/Login";
 
-describe("Testing Disabled state", () => {
+describe("Testing Login functionality", () => {
   it("Giving different type of inputs", async () => {
-    render(<Login />, { wrapper: MemoryRouter });
+    render(<Login />, { wrapper: BrowserRouter });
 
     expect(screen.getByRole("button", { name: /submit/i })).toBeDisabled();
     await userEvent.type(screen.getByLabelText("Email address"), "abc@gmail");
@@ -16,9 +16,9 @@ describe("Testing Disabled state", () => {
       screen.getByLabelText("Email address"),
       "abc@gmail.com"
     );
-    expect(screen.getByRole("button", { name: /submit/i })).not.toBeDisabled();
+    expect(screen.getByRole("button", { name: /submit/i })).toBeEnabled();
+    userEvent.click(screen.getByText(/submit/i));
 
-    fireEvent.click(screen.getByText(/submit/i));
-    screen.getByText(/loading/i);
+    expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
 });

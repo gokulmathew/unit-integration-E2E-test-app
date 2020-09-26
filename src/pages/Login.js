@@ -17,18 +17,12 @@ function Login() {
     setTimeout(() => {
       history.push(`/form-submit/${email}`);
     }, 3500);
-
-    // window.history.pushState({}, "new page", `/users`);
-    // window.history.push(`/form-submit/${email}`);
-    // setTimeout(() => {
-    //   setLoginSuccess(true);
-    // }, 4500);
   };
 
   return (
     <div className="centerContent">
       <div>
-        <h2>Example for cypress testing!</h2>
+        <h2>Example for testing!</h2>
         <br />
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="form-group d-inline place-items-center">

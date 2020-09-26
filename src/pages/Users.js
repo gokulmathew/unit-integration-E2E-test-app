@@ -1,3 +1,4 @@
+import Axios from "axios";
 import React, { useState } from "react";
 import { apiClient } from "../utils/api-client";
 
@@ -6,6 +7,8 @@ function Users() {
   const [error, setError] = useState(undefined);
 
   const getAPIData = async () => {
+    // const res = await Axios.get("https://jsonplaceholder.typicode.com/users");
+    // console.log(res.data);
     await apiClient("users").then(
       (results) => {
         setAPIData(results);
