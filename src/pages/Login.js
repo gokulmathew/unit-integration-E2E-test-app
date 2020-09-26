@@ -22,7 +22,7 @@ function Login() {
   return (
     <div className="centerContent">
       <div>
-        <h2>Example for automation testing!!!!</h2>
+        <h2>Example for automation testing!</h2>
         <br />
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="form-group d-inline place-items-center">
